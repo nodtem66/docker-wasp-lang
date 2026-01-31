@@ -92,6 +92,17 @@ docker build -t ghc-static:9.6.7-alpine --build-arg GHC_VERSION="9.6.7" .
 
 See: https://github.com/fossas/haskell-static-alpine
 
+## Known issues
+
+- Vite in the remote enviroment inside Dev Container cannot detect the file changes. No trigger
+send to Vite for rebuilding the modified source code [Ref](https://vite.dev/guide/troubleshooting#vite-does-not-detect-a-file-change). This is the note from the official Vite website:
+
+> **Using Vite on Windows Subsystem for Linux (WSL) 2**  
+> When running Vite on WSL2, file system watching does not work when a file is edited by Windows applications (non-WSL2 process). This is due to a WSL2 limitation. This also applies to running on Docker with a WSL2 backend. 
+> To fix it, you could either: 
+> - Recommended: Use WSL2 applications to edit your files. It is also recommended to move the project folder outside of a Windows filesystem. Accessing Windows filesystem from WSL2 is slow. Removing that overhead will improve performance.
+> - Set { usePolling: true }. Note that usePolling leads to high CPU utilization.
+
 ## License
 
 [Node License information](https://github.com/nodejs/node/blob/master/LICENSE) |
