@@ -39,18 +39,38 @@ The trade-off:
 > Currently, I use this Wasp-lang container with Podman (rootless mode), VS Code, and
 > the Dev Containers extension on Windows 11. The performance is decent, but more
 > importantly I have peace of mind. Security concerns no longer limit my creativity.
+> Please check [the guide for setting up Dev Container](./DevContainer.md).
 
 ## Image Variants
 
-### `wasp-lang:<version>-alpine`
+### `wasp-lang:<version>-node<node_version>-alpine`
 
-This image is based on the popular
-[Alpine Linux project](https://alpinelinux.org), available in
-[the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is
-much smaller than most distribution base images (~5MB), and thus leads to much
-slimmer images in general. To minimize image size, this image only has `wasp-cli` installed within.
+Ready-to-use images that contains:
 
-### `wasp-lang:0.20-alpine-node25`
+- wasp-cli
+- node
+- npm
+- yarn
+
+They are based on the popular [Alpine Linux project](https://alpinelinux.org),
+available in [the `alpine` official image](https://hub.docker.com/_/alpine).
+Alpine Linux is much smaller than most distribution base images (~10MB),
+and thus leads to much slimmer images in general.
+
+The Dockerfiles are at `/wasp-*/node`.
+The `nodejs` version can be customized by the argument `NODE_VERSION`. For example:
+
+```sh
+docker build -t wasp-lang:0.20-node25-alpine --build-arg NODE_VERSION="25" .
+```
+
+### `wasp-lang:<wasp_version>-alpine`
+
+Unusable images with only Wasp static binary (no `nodejs` or `npm` installed), serving as the bare-minimum image before copying to `nodejs` images. See: `/wasp-*/alpine`.
+
+```sh
+docker build -t wasp-lang:0.20-alpine --build-arg WASP_VERSION="0.20.1" .
+```
 
 ### `ghc-static:<version>-alpine`
 
