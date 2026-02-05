@@ -2,6 +2,12 @@
 
 The unofficial Wasp-lang docker image, designed for minimal alpine linux
 
+https://hub.docker.com/r/nodtem66/wasp-lang
+
+```
+docker run -it --rm nodtem66/wasp-lang:0.20-node22-alpine sh
+```
+
 ## What is Wasp-lang?
 
 Wasp (Web Application Specification) is a high-level language that generate whole source of
@@ -15,7 +21,7 @@ See: https://wasp.sh/
 
 ## Motivation for creating Docker Wasp-lang
 
-Developing an app using **Wasp** is straightforward: run a few commands to scaffold a project, then customize the `.wasp` file to bring your ideas to life. But suppose you find a fantastic NPM library that adds a powerful AI feature to your app. You install it, only to realize later that the library was actually **malicious**.
+Developing apps using **Wasp** is straightforward: run a few commands to scaffold a project, then customize the `.wasp` file to bring your ideas to life. But suppose you find a fantastic NPM library that adds a powerful AI feature to your app. You install it, only to realize later that the library was actually **malicious**.
 
 Supply-chain attacks are becoming increasingly sophisticated and frequent. How can we develop web applications without contantly fearing for our host system's integrity?
 
